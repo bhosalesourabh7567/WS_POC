@@ -1,0 +1,200 @@
+table DimCustomer
+	lineageTag: 86cca21e-5813-42ba-b843-d23f0f7bb5a7
+	sourceLineageTag: [Gold].[DimCustomer]
+
+	measure 'YTD Sales New' =
+			
+			TOTALYTD(
+			    SUM(FactInternetSales[LineTotal]),
+			    DimDate[FullDate]
+			)
+		lineageTag: 36df070e-1090-4672-add0-8466c63afbef
+
+		changedProperty = Name
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CustomerKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: db717f91-920b-4cfc-b759-96824fbc7701
+		sourceLineageTag: CustomerKey
+		summarizeBy: none
+		sourceColumn: CustomerKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column FullName
+		dataType: string
+		sourceProviderType: varchar(255)
+		lineageTag: ef4d948e-d5ed-4083-80f9-fcfeb27ab77a
+		sourceLineageTag: FullName
+		summarizeBy: none
+		sourceColumn: FullName
+
+		annotation SummarizationSetBy = Automatic
+
+	column Title
+		dataType: string
+		sourceProviderType: varchar(20)
+		lineageTag: 7358b042-ff48-4188-861e-8ad105dfda63
+		sourceLineageTag: Title
+		summarizeBy: none
+		sourceColumn: Title
+
+		annotation SummarizationSetBy = Automatic
+
+	column FirstName
+		dataType: string
+		sourceProviderType: varchar(50)
+		lineageTag: 1710f340-1afc-4740-8462-fd86aefd2082
+		sourceLineageTag: FirstName
+		summarizeBy: none
+		sourceColumn: FirstName
+
+		annotation SummarizationSetBy = Automatic
+
+	column MiddleName
+		dataType: string
+		sourceProviderType: varchar(50)
+		lineageTag: fd79001d-16db-417c-9941-64d094e3d940
+		sourceLineageTag: MiddleName
+		summarizeBy: none
+		sourceColumn: MiddleName
+
+		annotation SummarizationSetBy = Automatic
+
+	column LastName
+		dataType: string
+		sourceProviderType: varchar(50)
+		lineageTag: c38d5b27-1cfd-4dc6-b4d6-f21c8892d35b
+		sourceLineageTag: LastName
+		summarizeBy: none
+		sourceColumn: LastName
+
+		annotation SummarizationSetBy = Automatic
+
+	column PersonID
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 7ce97307-36cc-4579-a4dc-88724a9d36d8
+		sourceLineageTag: PersonID
+		summarizeBy: none
+		sourceColumn: PersonID
+
+		annotation SummarizationSetBy = Automatic
+
+	column AddressLine1
+		dataType: string
+		sourceProviderType: varchar(255)
+		lineageTag: 14c62647-4853-4d51-954e-1106fb285e6a
+		sourceLineageTag: AddressLine1
+		summarizeBy: none
+		sourceColumn: AddressLine1
+
+		annotation SummarizationSetBy = Automatic
+
+	column AddressLine2
+		dataType: string
+		sourceProviderType: varchar(255)
+		lineageTag: 6794cd6b-b1f3-4a64-a324-5e03e71e1ef4
+		sourceLineageTag: AddressLine2
+		summarizeBy: none
+		sourceColumn: AddressLine2
+
+		annotation SummarizationSetBy = Automatic
+
+	column City
+		dataType: string
+		sourceProviderType: varchar(100)
+		lineageTag: d548b49a-a6e1-49ce-bbfb-d1ed3d96ec52
+		sourceLineageTag: City
+		summarizeBy: none
+		sourceColumn: City
+
+		annotation SummarizationSetBy = Automatic
+
+	column StateProvince
+		dataType: string
+		sourceProviderType: varchar(100)
+		lineageTag: 4ea17ef2-5704-414c-b143-20891beb080f
+		sourceLineageTag: StateProvince
+		summarizeBy: none
+		sourceColumn: StateProvince
+
+		annotation SummarizationSetBy = Automatic
+
+	column CountryRegion
+		dataType: string
+		sourceProviderType: varchar(100)
+		lineageTag: 7eb4a7eb-91df-4d1f-b55b-9accc068931d
+		sourceLineageTag: CountryRegion
+		summarizeBy: none
+		sourceColumn: CountryRegion
+
+		annotation SummarizationSetBy = Automatic
+
+	column PostalCode
+		dataType: string
+		sourceProviderType: varchar(20)
+		lineageTag: 546b8ab3-8b68-41be-afa2-9079ac62489f
+		sourceLineageTag: PostalCode
+		summarizeBy: none
+		sourceColumn: PostalCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column CountryRegionCode
+		dataType: string
+		sourceProviderType: varchar(10)
+		lineageTag: fcf22070-6199-40f2-9f83-35c5a39eaa16
+		sourceLineageTag: CountryRegionCode
+		summarizeBy: none
+		sourceColumn: CountryRegionCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column StoreID
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: f71d3ec9-4590-49b7-ad8d-9176393acae3
+		sourceLineageTag: StoreID
+		summarizeBy: none
+		sourceColumn: StoreID
+
+		annotation SummarizationSetBy = Automatic
+
+	column TerritoryID
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: bace30ea-99e7-40fc-b0eb-101e8be1fcce
+		sourceLineageTag: TerritoryID
+		summarizeBy: none
+		sourceColumn: TerritoryID
+
+		annotation SummarizationSetBy = Automatic
+
+	column CreatedDate
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: 6d1b4fd9-d8e2-4bad-9a1c-cc0c3778fe4d
+		sourceLineageTag: CreatedDate
+		summarizeBy: none
+		sourceColumn: CreatedDate
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimCustomer = entity
+		mode: directLake
+		source
+			entityName: DimCustomer
+			schemaName: Gold
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

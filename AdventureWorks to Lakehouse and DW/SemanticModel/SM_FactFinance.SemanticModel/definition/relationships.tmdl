@@ -1,0 +1,20 @@
+relationship 73118b85-c53a-baa6-cdb9-61568029b727
+	fromColumn: factfinance.AccountKey
+	toColumn: dimaccount.AccountKey
+
+relationship 8b6dd0e5-7507-4492-52a3-dd00af0aa714
+	fromColumn: factfinance.DateKey
+	toColumn: dimdate.DateKey
+
+relationship 0a95aeae-821f-0fdb-efc7-d0eb0900d82a
+	fromColumn: factfinance.DepartmentGroupKey
+	toColumn: dimdepartmentgroup.DepartmentGroupKey
+
+relationship 6c5a59c7-3682-b1ca-5df5-9fe255cd9e86
+	fromColumn: factfinance.OrganizationKey
+	toColumn: dimorganization.OrganizationKey
+
+relationship 84b3ae02-f487-b8cf-e3ff-384d07ebcc20
+	fromColumn: factfinance.ScenarioKey
+	toColumn: dimscenario.ScenarioKey
+

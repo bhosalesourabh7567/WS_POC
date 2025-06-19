@@ -1,0 +1,202 @@
+table FactInternetSales
+	lineageTag: 604aeada-0aa9-4f82-8a26-0065e4a9b18e
+	sourceLineageTag: [Gold].[FactInternetSales]
+
+	column SalesOrderID
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 87fe2e21-e0b4-4ba0-9a2c-cd24ae102860
+		sourceLineageTag: SalesOrderID
+		summarizeBy: count
+		sourceColumn: SalesOrderID
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalesOrderDetailID
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 2df62dcb-2bc5-449d-ba30-67eb85ba6c3b
+		sourceLineageTag: SalesOrderDetailID
+		summarizeBy: count
+		sourceColumn: SalesOrderDetailID
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomerKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 23c45983-3412-48a6-9eff-bcd3a77490a4
+		sourceLineageTag: CustomerKey
+		summarizeBy: none
+		sourceColumn: CustomerKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: def206c2-dfc2-4aa9-b57e-a6985aa913db
+		sourceLineageTag: ProductKey
+		summarizeBy: none
+		sourceColumn: ProductKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrderDateKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 373423d1-9690-4eb6-85cc-66f9994f79d6
+		sourceLineageTag: OrderDateKey
+		summarizeBy: none
+		sourceColumn: OrderDateKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column DueDateKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: cea54538-3ee6-40d1-b19e-d51673f3a799
+		sourceLineageTag: DueDateKey
+		summarizeBy: count
+		sourceColumn: DueDateKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShipDateKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: fc6a778f-504e-4efa-9a45-e22873cdf589
+		sourceLineageTag: ShipDateKey
+		summarizeBy: count
+		sourceColumn: ShipDateKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalesTerritoryKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 3b4ea455-9324-4441-ac5b-23952d30c748
+		sourceLineageTag: SalesTerritoryKey
+		summarizeBy: none
+		sourceColumn: SalesTerritoryKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrderQty
+		dataType: int64
+		formatString: 0
+		sourceProviderType: smallint
+		lineageTag: beefaf90-73b9-4220-ac23-dfdd96a3a657
+		sourceLineageTag: OrderQty
+		summarizeBy: sum
+		sourceColumn: OrderQty
+
+		annotation SummarizationSetBy = Automatic
+
+	column UnitPrice
+		dataType: double
+		sourceProviderType: decimal(18, 2)
+		lineageTag: 2940479e-74e4-4c1c-8d3f-bbb51ff4f038
+		sourceLineageTag: UnitPrice
+		summarizeBy: sum
+		sourceColumn: UnitPrice
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column UnitPriceDiscount
+		dataType: double
+		sourceProviderType: decimal(18, 2)
+		lineageTag: 5a0b18a6-ff2e-4ea9-8a51-74d71d733125
+		sourceLineageTag: UnitPriceDiscount
+		summarizeBy: sum
+		sourceColumn: UnitPriceDiscount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column LineTotal
+		dataType: double
+		sourceProviderType: decimal(18, 2)
+		lineageTag: 5ba75361-21f1-465c-985f-3f02d1ca321a
+		sourceLineageTag: LineTotal
+		summarizeBy: sum
+		sourceColumn: LineTotal
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column RevisionNumber
+		dataType: int64
+		formatString: 0
+		sourceProviderType: smallint
+		lineageTag: 32d0b8d7-8258-4a8b-8e5c-c5892207665b
+		sourceLineageTag: RevisionNumber
+		summarizeBy: sum
+		sourceColumn: RevisionNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column CurrencyRateID
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 881b8509-379e-40cc-a2e1-a23a110857b4
+		sourceLineageTag: CurrencyRateID
+		summarizeBy: count
+		sourceColumn: CurrencyRateID
+
+		annotation SummarizationSetBy = Automatic
+
+	column CarrierTrackingNumber
+		dataType: string
+		sourceProviderType: varchar(25)
+		lineageTag: 68f01a6f-f2da-46e3-bca1-3b1e6ae84a06
+		sourceLineageTag: CarrierTrackingNumber
+		summarizeBy: none
+		sourceColumn: CarrierTrackingNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column ModifiedDate
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: fd6825c2-1936-4ab6-8e15-d635d325595f
+		sourceLineageTag: ModifiedDate
+		summarizeBy: none
+		sourceColumn: ModifiedDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column CreatedDate
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: c6fe598a-ea19-4ad3-a608-2452bc982000
+		sourceLineageTag: CreatedDate
+		summarizeBy: none
+		sourceColumn: CreatedDate
+
+		annotation SummarizationSetBy = Automatic
+
+	partition FactInternetSales = entity
+		mode: directLake
+		source
+			entityName: FactInternetSales
+			schemaName: Gold
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,44 @@
+table dimdepartmentgroup
+	lineageTag: 18d4a543-5ad3-4236-b05f-3f40c6def428
+	sourceLineageTag: [Gold].[dimdepartmentgroup]
+
+	column DepartmentGroupKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 417c3a60-32dc-4c3e-9858-548344d022bf
+		sourceLineageTag: DepartmentGroupKey
+		summarizeBy: none
+		sourceColumn: DepartmentGroupKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column ParentDepartmentGroupKey
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: fefc0903-fc4c-4328-8524-f9f13a69d199
+		sourceLineageTag: ParentDepartmentGroupKey
+		summarizeBy: none
+		sourceColumn: ParentDepartmentGroupKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column DepartmentGroupName
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 7102d6dc-e199-42f8-ad13-99c4294d7b5e
+		sourceLineageTag: DepartmentGroupName
+		summarizeBy: none
+		sourceColumn: DepartmentGroupName
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dimdepartmentgroup = entity
+		mode: directLake
+		source
+			entityName: dimdepartmentgroup
+			schemaName: Gold
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

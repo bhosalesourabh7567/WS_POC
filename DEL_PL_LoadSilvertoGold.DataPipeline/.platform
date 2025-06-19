@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "DEL_PL_LoadSilvertoGold"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "a5e3dacb-939b-be30-414f-55fe53945c01"
+  }
+}

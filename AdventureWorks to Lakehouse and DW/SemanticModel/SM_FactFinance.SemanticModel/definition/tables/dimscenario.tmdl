@@ -1,0 +1,34 @@
+table dimscenario
+	lineageTag: 136bcbe6-e927-495b-9992-b4e38c6ef0f8
+	sourceLineageTag: [Gold].[dimscenario]
+
+	column ScenarioKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: e9a92667-9e3c-4449-a5e4-63874d03e8aa
+		sourceLineageTag: ScenarioKey
+		summarizeBy: none
+		sourceColumn: ScenarioKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column ScenarioName
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 95f02c11-a721-4df5-abef-177f652bebce
+		sourceLineageTag: ScenarioName
+		summarizeBy: none
+		sourceColumn: ScenarioName
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dimscenario = entity
+		mode: directLake
+		source
+			entityName: dimscenario
+			schemaName: Gold
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

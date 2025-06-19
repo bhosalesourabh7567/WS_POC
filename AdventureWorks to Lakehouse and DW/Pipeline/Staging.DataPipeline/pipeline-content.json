@@ -1,0 +1,81 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "name": "Copy data1",
+        "type": "Copy",
+        "dependsOn": [],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "source": {
+            "type": "SqlServerSource",
+            "queryTimeout": "02:00:00",
+            "partitionOption": "None",
+            "datasetSettings": {
+              "annotations": [],
+              "type": "SqlServerTable",
+              "schema": [],
+              "typeProperties": {
+                "schema": "dbo",
+                "table": "DimCustomer",
+                "database": "AdventureWorksDW2019"
+              },
+              "externalReferences": {
+                "connection": "d9d48c9a-f0d8-4024-9e5c-d515ea296446"
+              }
+            }
+          },
+          "sink": {
+            "type": "DataWarehouseSink",
+            "allowCopyCommand": true,
+            "copyCommandSettings": {},
+            "tableOption": "autoCreate",
+            "datasetSettings": {
+              "annotations": [],
+              "linkedService": {
+                "name": "DW_AdventureWorks",
+                "properties": {
+                  "annotations": [],
+                  "type": "DataWarehouse",
+                  "typeProperties": {
+                    "endpoint": "fa7b2jvkrnqezhe25fwe36cmhy-qjpw6aq2n6iejl4sawben6piti.datawarehouse.fabric.microsoft.com",
+                    "artifactId": "867e9677-3ac6-4d21-89b9-e2f1a2d1339e",
+                    "workspaceId": "026f5f82-6f1a-4490-af92-058246f9e89a"
+                  }
+                }
+              },
+              "type": "DataWarehouseTable",
+              "schema": [],
+              "typeProperties": {
+                "schema": "dbo",
+                "table": "testcust"
+              }
+            }
+          },
+          "enableStaging": true,
+          "stagingSettings": {
+            "path": "fabricstag",
+            "enableCompression": false,
+            "externalReferences": {
+              "connection": "5cf31528-5a1a-4a4e-9ecf-d91018ef0fe4"
+            }
+          },
+          "translator": {
+            "type": "TabularTranslator",
+            "typeConversion": true,
+            "typeConversionSettings": {
+              "allowDataTruncation": true,
+              "treatBooleanAsNumber": false
+            }
+          }
+        }
+      }
+    ]
+  }
+}

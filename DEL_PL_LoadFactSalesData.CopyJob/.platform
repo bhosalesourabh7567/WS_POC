@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "CopyJob",
+    "displayName": "DEL_PL_LoadFactSalesData"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "ad7818fb-324c-9849-4c8d-35db4527f672"
+  }
+}

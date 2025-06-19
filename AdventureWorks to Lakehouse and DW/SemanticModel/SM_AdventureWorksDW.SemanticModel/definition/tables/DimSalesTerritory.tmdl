@@ -1,0 +1,113 @@
+table DimSalesTerritory
+	lineageTag: e38caba7-64ef-4082-a251-b03f4f6a12d5
+	sourceLineageTag: [Gold].[DimSalesTerritory]
+
+	column SalesTerritoryKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 821e523e-9b07-4a45-abee-069d30d2f440
+		sourceLineageTag: SalesTerritoryKey
+		summarizeBy: none
+		sourceColumn: SalesTerritoryKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalesTerritoryRegion
+		dataType: string
+		sourceProviderType: varchar(100)
+		lineageTag: c5e12e65-77eb-4f31-9754-d7751785a75b
+		sourceLineageTag: SalesTerritoryRegion
+		summarizeBy: none
+		sourceColumn: SalesTerritoryRegion
+
+		annotation SummarizationSetBy = Automatic
+
+	column CountryRegionCode
+		dataType: string
+		sourceProviderType: varchar(10)
+		lineageTag: 02bd3cfa-c17a-4028-942c-7ed1ccec5447
+		sourceLineageTag: CountryRegionCode
+		summarizeBy: none
+		sourceColumn: CountryRegionCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalesTerritoryGroup
+		dataType: string
+		sourceProviderType: varchar(50)
+		lineageTag: 73831e02-9c5b-4d4c-b669-78cf3352b684
+		sourceLineageTag: SalesTerritoryGroup
+		summarizeBy: none
+		sourceColumn: SalesTerritoryGroup
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalesYTD
+		dataType: double
+		sourceProviderType: decimal(18, 2)
+		lineageTag: 8c7c18ed-818a-46fb-8698-7f012b7a3d70
+		sourceLineageTag: SalesYTD
+		summarizeBy: none
+		sourceColumn: SalesYTD
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SalesLastYear
+		dataType: double
+		sourceProviderType: decimal(18, 2)
+		lineageTag: faa3acc5-297f-4118-97b1-050fbe4900bd
+		sourceLineageTag: SalesLastYear
+		summarizeBy: none
+		sourceColumn: SalesLastYear
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CostYTD
+		dataType: double
+		sourceProviderType: decimal(18, 2)
+		lineageTag: eed59e22-0e2c-4363-b489-76dc4f4c366f
+		sourceLineageTag: CostYTD
+		summarizeBy: none
+		sourceColumn: CostYTD
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CostLastYear
+		dataType: double
+		sourceProviderType: decimal(18, 2)
+		lineageTag: 21e802a3-7670-4e18-a61e-46b75a8bbedc
+		sourceLineageTag: CostLastYear
+		summarizeBy: none
+		sourceColumn: CostLastYear
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CreatedDate
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: cd49d0ee-b078-4411-82b0-c0b28d43a865
+		sourceLineageTag: CreatedDate
+		summarizeBy: none
+		sourceColumn: CreatedDate
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimSalesTerritory = entity
+		mode: directLake
+		source
+			entityName: DimSalesTerritory
+			schemaName: Gold
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

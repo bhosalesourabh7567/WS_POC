@@ -1,0 +1,27 @@
+CREATE TABLE [Gold].[DimDate] (
+
+	[DateKey] int NOT NULL, 
+	[FullDate] date NULL, 
+	[Day] int NULL, 
+	[DaySuffix] varchar(5) NULL, 
+	[DayName] varchar(15) NULL, 
+	[Weekday] int NULL, 
+	[IsWeekend] bit NULL, 
+	[DOWInMonth] int NULL, 
+	[DayOfYear] int NULL, 
+	[WeekOfYear] int NULL, 
+	[Month] int NULL, 
+	[MonthName] varchar(15) NULL, 
+	[Quarter] int NULL, 
+	[QuarterName] varchar(5) NULL, 
+	[Year] int NULL, 
+	[FirstDayOfMonth] date NULL, 
+	[LastDayOfMonth] date NULL, 
+	[FirstDayOfYear] date NULL, 
+	[LastDayOfYear] date NULL, 
+	[IsLeapYear] bit NULL, 
+	[CreatedDate] datetime2(3) NULL, 
+	[CreatedBy] varchar(500) NULL, 
+	[UpdatedBy] varchar(500) NULL, 
+	[UpdatedDate] datetime2(3) NULL
+);

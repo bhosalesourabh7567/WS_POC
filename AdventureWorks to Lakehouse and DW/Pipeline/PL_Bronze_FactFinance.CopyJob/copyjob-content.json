@@ -1,0 +1,887 @@
+{
+  "properties": {
+    "jobMode": "CDC",
+    "source": {
+      "type": "SqlServerTable",
+      "connectionSettings": {
+        "type": "SqlServer",
+        "typeProperties": {
+          "database": "AdventureWorks2019"
+        },
+        "externalReferences": {
+          "connection": "d0a7048a-f51f-406c-a24f-e8c16f0779dc"
+        }
+      }
+    },
+    "destination": {
+      "type": "LakehouseTable",
+      "connectionSettings": {
+        "type": "Lakehouse",
+        "typeProperties": {
+          "workspaceId": "026f5f82-6f1a-4490-af92-058246f9e89a",
+          "artifactId": "8ee1f78d-64d2-4317-9095-79c2ec4bfc14",
+          "rootFolder": "Tables"
+        }
+      }
+    },
+    "policy": {
+      "timeout": "0.12:00:00"
+    }
+  },
+  "activities": [
+    {
+      "id": "f473fbbf-282d-40e6-a731-fe6d3befed8a",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "Person",
+            "table": "CountryRegion"
+          },
+          "changeDataSettings": {
+            "readMethod": "SnapshotPlusIncremental",
+            "columns": [
+              {
+                "name": "ModifiedDate",
+                "type": "DateTime",
+                "physicalType": "datetime"
+              }
+            ]
+          }
+        },
+        "destination": {
+          "writeBehavior": "Append",
+          "datasetSettings": {
+            "schema": "Bronze",
+            "table": "CountryRegion"
+          }
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "8b1adc6b-e00b-4c62-b24e-ee19d376d181",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "Person",
+            "table": "Person"
+          },
+          "changeDataSettings": {
+            "readMethod": "SnapshotPlusIncremental",
+            "columns": [
+              {
+                "name": "ModifiedDate",
+                "type": "DateTime",
+                "physicalType": "datetime"
+              }
+            ]
+          }
+        },
+        "destination": {
+          "writeBehavior": "Append",
+          "datasetSettings": {
+            "schema": "Bronze",
+            "table": "Person"
+          }
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "5b81d23a-ee0b-4e96-8d61-16c49f0334f8",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "Person",
+            "table": "StateProvince"
+          },
+          "changeDataSettings": {
+            "readMethod": "SnapshotPlusIncremental",
+            "columns": [
+              {
+                "name": "ModifiedDate",
+                "type": "DateTime",
+                "physicalType": "datetime"
+              }
+            ]
+          }
+        },
+        "destination": {
+          "writeBehavior": "Append",
+          "datasetSettings": {
+            "schema": "Bronze",
+            "table": "StateProvince"
+          }
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "11f0d631-af79-49ed-b8d7-986926c30123",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "Production",
+            "table": "Product"
+          },
+          "changeDataSettings": {
+            "readMethod": "SnapshotPlusIncremental",
+            "columns": [
+              {
+                "name": "ModifiedDate",
+                "type": "DateTime",
+                "physicalType": "datetime"
+              }
+            ]
+          }
+        },
+        "destination": {
+          "writeBehavior": "Append",
+          "datasetSettings": {
+            "schema": "Bronze",
+            "table": "Product"
+          }
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "c58aa3c8-f386-4ce6-9bf8-944ed9ab1322",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "Production",
+            "table": "ProductSubcategory"
+          },
+          "changeDataSettings": {
+            "readMethod": "SnapshotPlusIncremental",
+            "columns": [
+              {
+                "name": "ModifiedDate",
+                "type": "DateTime",
+                "physicalType": "datetime"
+              }
+            ]
+          }
+        },
+        "destination": {
+          "writeBehavior": "Append",
+          "datasetSettings": {
+            "schema": "Bronze",
+            "table": "ProductSubcategory"
+          }
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "d1c066d9-43b8-42fa-b478-751d2752ed77",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "Sales",
+            "table": "CreditCard"
+          },
+          "changeDataSettings": {
+            "readMethod": "SnapshotPlusIncremental",
+            "columns": [
+              {
+                "name": "ModifiedDate",
+                "type": "DateTime",
+                "physicalType": "datetime"
+              }
+            ]
+          }
+        },
+        "destination": {
+          "writeBehavior": "Append",
+          "datasetSettings": {
+            "schema": "Bronze",
+            "table": "CreditCard"
+          }
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "fac0ca73-4288-49c2-8ad0-1752aa7ab94a",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "Sales",
+            "table": "Currency"
+          },
+          "changeDataSettings": {
+            "readMethod": "SnapshotPlusIncremental",
+            "columns": [
+              {
+                "name": "ModifiedDate",
+                "type": "DateTime",
+                "physicalType": "datetime"
+              }
+            ]
+          }
+        },
+        "destination": {
+          "writeBehavior": "Append",
+          "datasetSettings": {
+            "schema": "Bronze",
+            "table": "Currency"
+          }
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "8ae5f2c5-f9ff-4786-afbb-979bac92b517",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "Sales",
+            "table": "CurrencyRate"
+          },
+          "changeDataSettings": {
+            "readMethod": "SnapshotPlusIncremental",
+            "columns": [
+              {
+                "name": "ModifiedDate",
+                "type": "DateTime",
+                "physicalType": "datetime"
+              }
+            ]
+          }
+        },
+        "destination": {
+          "writeBehavior": "Append",
+          "datasetSettings": {
+            "schema": "Bronze",
+            "table": "CurrencyRate"
+          }
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "bede1961-2233-49f2-9a47-c6d5b1a64a59",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "Sales",
+            "table": "Customer"
+          },
+          "changeDataSettings": {
+            "readMethod": "SnapshotPlusIncremental",
+            "columns": [
+              {
+                "name": "ModifiedDate",
+                "type": "DateTime",
+                "physicalType": "datetime"
+              }
+            ]
+          }
+        },
+        "destination": {
+          "writeBehavior": "Append",
+          "datasetSettings": {
+            "schema": "Bronze",
+            "table": "Customer"
+          }
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "d39b5816-3645-4d9e-8d55-835643d86826",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "Sales",
+            "table": "SalesTerritory"
+          },
+          "changeDataSettings": {
+            "readMethod": "SnapshotPlusIncremental",
+            "columns": [
+              {
+                "name": "ModifiedDate",
+                "type": "DateTime",
+                "physicalType": "datetime"
+              }
+            ]
+          }
+        },
+        "destination": {
+          "writeBehavior": "Append",
+          "datasetSettings": {
+            "schema": "Bronze",
+            "table": "SalesTerritory"
+          }
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "dd4cbd61-3248-40e4-a671-0d98fcf0f98b",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "Person",
+            "table": "AddressType"
+          },
+          "changeDataSettings": {
+            "readMethod": "SnapshotPlusIncremental",
+            "columns": [
+              {
+                "name": "ModifiedDate",
+                "type": "DateTime",
+                "physicalType": "datetime"
+              }
+            ]
+          }
+        },
+        "destination": {
+          "writeBehavior": "Append",
+          "datasetSettings": {
+            "schema": "Bronze",
+            "table": "AddressType"
+          }
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "d7c66def-795c-42b2-a48c-faa34e0216d5",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "Person",
+            "table": "BusinessEntityAddress"
+          },
+          "changeDataSettings": {
+            "readMethod": "SnapshotPlusIncremental",
+            "columns": [
+              {
+                "name": "ModifiedDate",
+                "type": "DateTime",
+                "physicalType": "datetime"
+              }
+            ]
+          }
+        },
+        "destination": {
+          "writeBehavior": "Append",
+          "datasetSettings": {
+            "schema": "Bronze",
+            "table": "BusinessEntityAddress"
+          }
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "61cd3866-645b-49b4-a46d-30c3486523db",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "Person",
+            "table": "EmailAddress"
+          },
+          "changeDataSettings": {
+            "readMethod": "SnapshotPlusIncremental",
+            "columns": [
+              {
+                "name": "ModifiedDate",
+                "type": "DateTime",
+                "physicalType": "datetime"
+              }
+            ]
+          }
+        },
+        "destination": {
+          "writeBehavior": "Append",
+          "datasetSettings": {
+            "schema": "Bronze",
+            "table": "EmailAddress"
+          }
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "9905f9ec-89b5-4e1a-8f28-6e9c78d23ee1",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "Person",
+            "table": "PersonPhone"
+          },
+          "changeDataSettings": {
+            "readMethod": "SnapshotPlusIncremental",
+            "columns": [
+              {
+                "name": "ModifiedDate",
+                "type": "DateTime",
+                "physicalType": "datetime"
+              }
+            ]
+          }
+        },
+        "destination": {
+          "writeBehavior": "Append",
+          "datasetSettings": {
+            "schema": "Bronze",
+            "table": "PersonPhone"
+          }
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "bed3b260-5829-456f-8e4e-5107ffebfad1",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "Person",
+            "table": "PhoneNumberType"
+          },
+          "changeDataSettings": {
+            "readMethod": "SnapshotPlusIncremental",
+            "columns": [
+              {
+                "name": "ModifiedDate",
+                "type": "DateTime",
+                "physicalType": "datetime"
+              }
+            ]
+          }
+        },
+        "destination": {
+          "writeBehavior": "Append",
+          "datasetSettings": {
+            "schema": "Bronze",
+            "table": "PhoneNumberType"
+          }
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "e04b96ea-e43f-429c-b479-fdf672927729",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "Person",
+            "table": "Address"
+          },
+          "changeDataSettings": {
+            "readMethod": "SnapshotPlusIncremental",
+            "columns": [
+              {
+                "name": "ModifiedDate",
+                "type": "DateTime",
+                "physicalType": "datetime"
+              }
+            ]
+          }
+        },
+        "destination": {
+          "writeBehavior": "Append",
+          "datasetSettings": {
+            "schema": "Bronze",
+            "table": "Address"
+          }
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator",
+          "mappings": [
+            {
+              "source": {
+                "name": "AddressID",
+                "type": "Int32",
+                "physicalType": "int"
+              },
+              "destination": {
+                "name": "AddressID",
+                "physicalType": "integer"
+              }
+            },
+            {
+              "source": {
+                "name": "AddressLine1",
+                "type": "String",
+                "physicalType": "nvarchar",
+                "length": "60"
+              },
+              "destination": {
+                "name": "AddressLine1",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "AddressLine2",
+                "type": "String",
+                "physicalType": "nvarchar",
+                "length": "60"
+              },
+              "destination": {
+                "name": "AddressLine2",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "City",
+                "type": "String",
+                "physicalType": "nvarchar",
+                "length": "30"
+              },
+              "destination": {
+                "name": "City",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "StateProvinceID",
+                "type": "Int32",
+                "physicalType": "int"
+              },
+              "destination": {
+                "name": "StateProvinceID",
+                "physicalType": "integer"
+              }
+            },
+            {
+              "source": {
+                "name": "PostalCode",
+                "type": "String",
+                "physicalType": "nvarchar",
+                "length": "15"
+              },
+              "destination": {
+                "name": "PostalCode",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "rowguid",
+                "type": "Guid",
+                "physicalType": "uniqueidentifier"
+              },
+              "destination": {
+                "name": "rowguid",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "ModifiedDate",
+                "type": "DateTime",
+                "physicalType": "datetime"
+              },
+              "destination": {
+                "name": "ModifiedDate",
+                "physicalType": "timestamp"
+              }
+            }
+          ]
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "5105a379-b40c-43b3-b496-e24bd84b356d",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "Production",
+            "table": "ProductCategory"
+          },
+          "changeDataSettings": {
+            "readMethod": "SnapshotPlusIncremental",
+            "columns": [
+              {
+                "name": "ModifiedDate",
+                "type": "DateTime",
+                "physicalType": "datetime"
+              }
+            ]
+          }
+        },
+        "destination": {
+          "writeBehavior": "Append",
+          "datasetSettings": {
+            "schema": "Bronze",
+            "table": "ProductCategory"
+          }
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "33be3f49-ed7a-4e5f-8a08-5af5b433015e",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "Sales",
+            "table": "SalesOrderDetail"
+          },
+          "changeDataSettings": {
+            "readMethod": "SnapshotPlusIncremental",
+            "columns": [
+              {
+                "name": "ModifiedDate",
+                "type": "DateTime",
+                "physicalType": "datetime"
+              }
+            ]
+          }
+        },
+        "destination": {
+          "writeBehavior": "Append",
+          "datasetSettings": {
+            "schema": "Bronze",
+            "table": "SalesOrderDetail"
+          }
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "bba7c69d-cf61-4e86-bf16-e2fe3221cb4c",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "Sales",
+            "table": "SalesOrderHeader"
+          },
+          "changeDataSettings": {
+            "readMethod": "SnapshotPlusIncremental",
+            "columns": [
+              {
+                "name": "ModifiedDate",
+                "type": "DateTime",
+                "physicalType": "datetime"
+              }
+            ]
+          }
+        },
+        "destination": {
+          "writeBehavior": "Append",
+          "datasetSettings": {
+            "schema": "Bronze",
+            "table": "SalesOrderHeader"
+          }
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "6f3b58b2-4a13-4e8d-bab1-40c2c9392d04",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "Sales",
+            "table": "SalesOrderHeaderSalesReason"
+          },
+          "changeDataSettings": {
+            "readMethod": "SnapshotPlusIncremental",
+            "columns": [
+              {
+                "name": "ModifiedDate",
+                "type": "DateTime",
+                "physicalType": "datetime"
+              }
+            ]
+          }
+        },
+        "destination": {
+          "writeBehavior": "Append",
+          "datasetSettings": {
+            "schema": "Bronze",
+            "table": "SalesOrderHeaderSalesReason"
+          }
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    }
+  ]
+}

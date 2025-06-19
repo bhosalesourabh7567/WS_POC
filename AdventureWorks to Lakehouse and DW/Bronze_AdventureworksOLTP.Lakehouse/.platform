@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Lakehouse",
+    "displayName": "Bronze_AdventureworksOLTP"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "ec4bfc14-79c2-9095-4317-64d28ee1f78d"
+  }
+}

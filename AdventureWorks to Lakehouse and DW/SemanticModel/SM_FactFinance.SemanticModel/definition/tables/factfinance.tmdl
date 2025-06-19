@@ -1,0 +1,102 @@
+table factfinance
+	lineageTag: 14c0b2f0-ea04-477b-a70c-e9a5d17f5f80
+	sourceLineageTag: [Gold].[factfinance]
+
+	column FinanceKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 8e97b04e-8507-4745-86e7-cf4f1bfcf453
+		sourceLineageTag: FinanceKey
+		summarizeBy: count
+		sourceColumn: FinanceKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column DateKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 6e17e958-2184-408d-b5af-f353ab87b713
+		sourceLineageTag: DateKey
+		summarizeBy: none
+		sourceColumn: DateKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrganizationKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 0728f0b0-a597-4bbc-8bff-17cbbb10b061
+		sourceLineageTag: OrganizationKey
+		summarizeBy: none
+		sourceColumn: OrganizationKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column DepartmentGroupKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 990c9362-2ec5-422c-ad4f-3d079bf82de8
+		sourceLineageTag: DepartmentGroupKey
+		summarizeBy: none
+		sourceColumn: DepartmentGroupKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column ScenarioKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 23d33bad-d0f1-403a-9dcd-2a84090d92d4
+		sourceLineageTag: ScenarioKey
+		summarizeBy: none
+		sourceColumn: ScenarioKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column AccountKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 85495f9d-8c6a-45dd-b042-e70276c779b7
+		sourceLineageTag: AccountKey
+		summarizeBy: none
+		sourceColumn: AccountKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column Amount
+		dataType: double
+		sourceProviderType: float
+		lineageTag: d09ddb14-007e-4f9b-a491-67d504f36d00
+		sourceLineageTag: Amount
+		summarizeBy: sum
+		sourceColumn: Amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Date
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: 121eadfd-c720-4c1e-b4e7-4e8538bd21b8
+		sourceLineageTag: Date
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+	partition factfinance = entity
+		mode: directLake
+		source
+			entityName: factfinance
+			schemaName: Gold
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

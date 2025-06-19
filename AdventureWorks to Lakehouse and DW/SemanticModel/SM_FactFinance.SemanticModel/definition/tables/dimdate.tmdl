@@ -1,0 +1,176 @@
+table dimdate
+	lineageTag: ea34314c-9a99-41b4-b872-38badfde0290
+	sourceLineageTag: [Gold].[dimdate]
+
+	column DateKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: d6b1c0af-5914-44ea-99aa-5e85aea58761
+		sourceLineageTag: DateKey
+		summarizeBy: none
+		sourceColumn: DateKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column FullDateAlternateKey
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: date
+		lineageTag: 853bf48f-7e6e-4fcc-9c8c-e717ab16da49
+		sourceLineageTag: FullDateAlternateKey
+		summarizeBy: none
+		sourceColumn: FullDateAlternateKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column DayNumberOfWeek
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 62cec2d8-7c02-459b-8bbc-6ebddc65c396
+		sourceLineageTag: DayNumberOfWeek
+		summarizeBy: none
+		sourceColumn: DayNumberOfWeek
+
+		annotation SummarizationSetBy = Automatic
+
+	column EnglishDayNameOfWeek
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 9b08665c-2046-4ba9-b30f-4e1f7f42a6f9
+		sourceLineageTag: EnglishDayNameOfWeek
+		summarizeBy: none
+		sourceColumn: EnglishDayNameOfWeek
+
+		annotation SummarizationSetBy = Automatic
+
+	column DayNumberOfMonth
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 08715f92-23bd-4002-a8e7-d14c2e9491a5
+		sourceLineageTag: DayNumberOfMonth
+		summarizeBy: none
+		sourceColumn: DayNumberOfMonth
+
+		annotation SummarizationSetBy = Automatic
+
+	column DayNumberOfYear
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: ee13ffca-a580-449d-a24a-b5b5ac522c55
+		sourceLineageTag: DayNumberOfYear
+		summarizeBy: none
+		sourceColumn: DayNumberOfYear
+
+		annotation SummarizationSetBy = Automatic
+
+	column WeekNumberOfYear
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 4e691e99-15b7-465c-8781-681f0f8c7bde
+		sourceLineageTag: WeekNumberOfYear
+		summarizeBy: none
+		sourceColumn: WeekNumberOfYear
+
+		annotation SummarizationSetBy = Automatic
+
+	column EnglishMonthName
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: b993e2a2-bc4a-4924-a7b3-ebe0d974b8c9
+		sourceLineageTag: EnglishMonthName
+		summarizeBy: none
+		sourceColumn: EnglishMonthName
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthNumberOfYear
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: c175d2d1-eb84-421e-bb3b-41986a4ef10b
+		sourceLineageTag: MonthNumberOfYear
+		summarizeBy: none
+		sourceColumn: MonthNumberOfYear
+
+		annotation SummarizationSetBy = Automatic
+
+	column CalendarQuarter
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 542d4a28-7509-4008-b421-ec77e9fdcc9b
+		sourceLineageTag: CalendarQuarter
+		summarizeBy: none
+		sourceColumn: CalendarQuarter
+
+		annotation SummarizationSetBy = Automatic
+
+	column CalendarYear
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 2701de2a-686b-4147-90f9-48f069fad464
+		sourceLineageTag: CalendarYear
+		summarizeBy: none
+		sourceColumn: CalendarYear
+
+		annotation SummarizationSetBy = Automatic
+
+	column CalendarSemester
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: b70aecf1-5cdd-45a6-a4dc-9f9f8a751f7d
+		sourceLineageTag: CalendarSemester
+		summarizeBy: none
+		sourceColumn: CalendarSemester
+
+		annotation SummarizationSetBy = Automatic
+
+	column FiscalQuarter
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 0e8976f2-b976-4725-bf66-e8206e533711
+		sourceLineageTag: FiscalQuarter
+		summarizeBy: none
+		sourceColumn: FiscalQuarter
+
+		annotation SummarizationSetBy = Automatic
+
+	column FiscalYear
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 848a38a2-17aa-4a43-b455-8003112ad0c4
+		sourceLineageTag: FiscalYear
+		summarizeBy: none
+		sourceColumn: FiscalYear
+
+		annotation SummarizationSetBy = Automatic
+
+	column FiscalSemester
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: bf56edd3-a7c5-47e3-86c8-e38dc0f1fa9b
+		sourceLineageTag: FiscalSemester
+		summarizeBy: none
+		sourceColumn: FiscalSemester
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dimdate = entity
+		mode: directLake
+		source
+			entityName: dimdate
+			schemaName: Gold
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

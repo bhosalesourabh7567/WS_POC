@@ -1,0 +1,117 @@
+table dimaccount
+	lineageTag: e0a992a5-262d-4b86-9b07-a00cab832acd
+	sourceLineageTag: [Gold].[dimaccount]
+
+	column AccountKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: f6371e23-b616-4988-bd94-949e6a491c37
+		sourceLineageTag: AccountKey
+		summarizeBy: none
+		sourceColumn: AccountKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column ParentAccountKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: dcdc84e5-5f72-4f22-a892-df3961e81e19
+		sourceLineageTag: ParentAccountKey
+		summarizeBy: none
+		sourceColumn: ParentAccountKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column AccountCodeAlternateKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: e672a168-54f6-4389-b5d3-a13c2efdebe4
+		sourceLineageTag: AccountCodeAlternateKey
+		summarizeBy: none
+		sourceColumn: AccountCodeAlternateKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column ParentAccountCodeAlternateKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: cb19403b-6847-49b9-9779-2ea0885b128d
+		sourceLineageTag: ParentAccountCodeAlternateKey
+		summarizeBy: none
+		sourceColumn: ParentAccountCodeAlternateKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column AccountDescription
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 3f8a121a-f032-4d35-926d-0d6a53c34d68
+		sourceLineageTag: AccountDescription
+		summarizeBy: none
+		sourceColumn: AccountDescription
+
+		annotation SummarizationSetBy = Automatic
+
+	column AccountType
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: a1bea355-5653-43a0-8915-b7c48d2ea7d3
+		sourceLineageTag: AccountType
+		summarizeBy: none
+		sourceColumn: AccountType
+
+		annotation SummarizationSetBy = Automatic
+
+	column Operator
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 9ad7104e-1852-4c84-94ce-deef8737b7d2
+		sourceLineageTag: Operator
+		summarizeBy: none
+		sourceColumn: Operator
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomMembers
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 6794daec-8ede-428d-be7b-16e0a0294768
+		sourceLineageTag: CustomMembers
+		summarizeBy: none
+		sourceColumn: CustomMembers
+
+		annotation SummarizationSetBy = Automatic
+
+	column ValueType
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: e9d0d7ab-046b-4914-9bb9-409a9ca972a6
+		sourceLineageTag: ValueType
+		summarizeBy: none
+		sourceColumn: ValueType
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomMemberOptions
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: dc29c6b9-5e81-411e-9988-4270b9622834
+		sourceLineageTag: CustomMemberOptions
+		summarizeBy: none
+		sourceColumn: CustomMemberOptions
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dimaccount = entity
+		mode: directLake
+		source
+			entityName: dimaccount
+			schemaName: Gold
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,179 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "Lookup",
+        "typeProperties": {
+          "source": {
+            "type": "SqlServerSource",
+            "sqlReaderQuery": {
+              "value": "SELECT *\nFROM dbo.Configuration\nWHERE  DestTableName = CASE WHEN '@{variables('Table_Name')}' = 'ALL' THEN DestTableName ELSE '@{variables('Table_Name')}' END ",
+              "type": "Expression"
+            },
+            "partitionOption": "None",
+            "queryTimeout": "02:00:00"
+          },
+          "datasetSettings": {
+            "type": "SqlServerTable",
+            "typeProperties": {
+              "database": "AdventureWorks2019"
+            },
+            "schema": [],
+            "externalReferences": {
+              "connection": "d0a7048a-f51f-406c-a24f-e8c16f0779dc"
+            },
+            "annotations": []
+          },
+          "firstRowOnly": false
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "GetMetadata",
+        "dependsOn": []
+      },
+      {
+        "type": "ForEach",
+        "typeProperties": {
+          "items": {
+            "value": "@activity('GetMetadata').output.value",
+            "type": "Expression"
+          },
+          "activities": [
+            {
+              "type": "Copy",
+              "typeProperties": {
+                "source": {
+                  "type": "SqlServerSource",
+                  "sqlReaderQuery": {
+                    "value": "@concat(\n  'SELECT * FROM [', item().SrcSchema, '].[', item().SrcTableName, '] ',\n  if(\n    equals(item().LoadType, 'Delta'),\n    concat(\n      'WHERE [', item().IncrementalColumn, '] > ''',\n      if(\n        equals(item().LastLoadedDate, ''),\n        formatDateTime(addDays(utcNow(), -1), 'yyyy-MM-dd'),\n        item().LastLoadedDate\n      ),\n      ''''\n    ),\n    ''\n  )\n)\n",
+                    "type": "Expression"
+                  },
+                  "partitionOption": "None",
+                  "queryTimeout": "02:00:00",
+                  "datasetSettings": {
+                    "type": "SqlServerTable",
+                    "typeProperties": {
+                      "schema": "Person",
+                      "table": "Address",
+                      "database": "AdventureWorks2019"
+                    },
+                    "schema": [],
+                    "externalReferences": {
+                      "connection": "d0a7048a-f51f-406c-a24f-e8c16f0779dc"
+                    },
+                    "annotations": []
+                  }
+                },
+                "sink": {
+                  "type": "LakehouseTableSink",
+                  "tableActionOption": "OverwriteSchema",
+                  "partitionOption": "None",
+                  "datasetSettings": {
+                    "type": "LakehouseTable",
+                    "typeProperties": {
+                      "schema": {
+                        "value": "@item().DestSchema",
+                        "type": "Expression"
+                      },
+                      "table": {
+                        "value": "@item().DestTableName",
+                        "type": "Expression"
+                      }
+                    },
+                    "schema": [],
+                    "linkedService": {
+                      "name": "Bronze_AdventureworksOLTP",
+                      "properties": {
+                        "type": "Lakehouse",
+                        "typeProperties": {
+                          "artifactId": "ec4bfc14-79c2-9095-4317-64d28ee1f78d",
+                          "workspaceId": "00000000-0000-0000-0000-000000000000",
+                          "rootFolder": "Tables"
+                        },
+                        "annotations": []
+                      }
+                    },
+                    "annotations": []
+                  }
+                },
+                "translator": {
+                  "type": "TabularTranslator",
+                  "typeConversion": true,
+                  "typeConversionSettings": {
+                    "allowDataTruncation": true,
+                    "treatBooleanAsNumber": false
+                  }
+                },
+                "enableStaging": false
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "Source To Dest",
+              "dependsOn": []
+            },
+            {
+              "type": "Script",
+              "typeProperties": {
+                "database": "AdventureWorks2019",
+                "scripts": [
+                  {
+                    "text": {
+                      "value": "@concat(\n  'UPDATE Configuration ',\n  'SET LastLoadedDate = DATEADD(MINUTE, 330, SYSUTCDATETIME()) ',\n  'WHERE SrcTableName = ''', item().SrcTableName, ''' ',\n  'AND SrcSchema = ''', item().SrcSchema, ''';'\n)",
+                      "type": "Expression"
+                    },
+                    "type": "Query"
+                  }
+                ],
+                "scriptBlockExecutionTimeout": "02:00:00"
+              },
+              "externalReferences": {
+                "connection": "d0a7048a-f51f-406c-a24f-e8c16f0779dc"
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "Script1",
+              "dependsOn": [
+                {
+                  "activity": "Source To Dest",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "name": "ForEach1",
+        "dependsOn": [
+          {
+            "activity": "GetMetadata",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      }
+    ],
+    "variables": {
+      "Table_Name": {
+        "type": "String",
+        "defaultValue": "Product"
+      }
+    }
+  }
+}

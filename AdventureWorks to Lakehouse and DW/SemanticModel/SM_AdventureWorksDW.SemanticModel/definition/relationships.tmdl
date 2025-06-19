@@ -1,0 +1,22 @@
+relationship 0df5c5e6-6cc2-ebe4-42f7-732c344f82cf
+	crossFilteringBehavior: bothDirections
+	fromColumn: FactInternetSales.CustomerKey
+	toColumn: DimCustomer.CustomerKey
+
+relationship 2f1452fc-af8f-e0b1-e6f8-1f757f0114ae
+	fromColumn: FactInternetSales.OrderDateKey
+	toColumn: DimDate.DateKey
+
+relationship c06b6dd7-db63-668d-10c4-f32a4ff6c310
+	isActive: false
+	fromColumn: FactInternetSales.ShipDateKey
+	toColumn: DimDate.DateKey
+
+relationship 279e35df-707b-949a-2d5c-1e2e9533eefe
+	fromColumn: FactInternetSales.ProductKey
+	toColumn: DimProduct.ProductKey
+
+relationship 0104b5e3-ca36-9a40-f2e5-c02abcbf8ae5
+	fromColumn: FactInternetSales.SalesTerritoryKey
+	toColumn: DimSalesTerritory.SalesTerritoryKey
+
